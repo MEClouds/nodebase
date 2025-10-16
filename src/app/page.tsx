@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button"
+import prisma from "@/lib/db"
+const Page = async () => {
+  const users = await prisma.user.findMany()
 
-const Page = () => {
-  const something = true
   return (
     <div className="min-h-screen min-w-screen flex items-center justify-center">
       Setup Project
       <Button className="m-4" variant={"outline"} size={"sm"}>
         Start
       </Button>
+      {JSON.stringify(users)}
     </div>
   )
 }
